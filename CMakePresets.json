@@ -41,6 +41,7 @@
       "name": "msvc-base",
       "hidden": true,
       "inherits": "default",
+      "binaryDir": "${sourceDir}/build/vs2022",
       "description": "Options specific for MSVC",
       "cacheVariables": {
         "CMAKE_C_FLAGS_INIT": "-D_ITERATOR_DEBUG_LEVEL=0 /MP",
@@ -96,8 +97,8 @@
     },
     {
     "name": "android",
-    "generator": "Ninja",
-    "binaryDir": "${sourceDir}/build/",
+    "inherits": "default",
+    "binaryDir": "${sourceDir}/build/android",
     "cacheVariables": {
         "CMAKE_SYSTEM_NAME": "Android",
         "CMAKE_SYSTEM_VERSION": "24",
@@ -113,14 +114,19 @@
         "SLANG_ENABLE_SLANG_RHI": "OFF",
         "SLANG_ENABLE_TESTS": "OFF",
         "SLANG_ENABLE_EXAMPLES": "OFF",
-        "SLANG_ENABLE_SPLIT_DEBUG_INFO": "OFF",
-        "SLANG_GENERATORS_PATH": "../generators/bin",
+        "SLANG_ENABLE_SLANGD": "OFF",
+        "SLANG_ENABLE_SLANGC": "OFF",
+        "SLANG_ENABLE_SLANGI": "OFF",
+        "SLANG_ENABLE_SLANGRT": "OFF",   
+        "SLANG_ENABLE_SLANG_GLSLANG" : "OFF",
+        "SLANG_GENERATORS_PATH": "../../generators/bin",
         "SLANG_LIB_TYPE": "STATIC"
       }
     },
     {
       "name": "iOS",
       "inherits": "default",
+      "binaryDir": "${sourceDir}/build/iOS",
       "description": "Build iOS version of Slang",
       "cacheVariables": {
         "CMAKE_SYSTEM_NAME": "iOS",
@@ -142,7 +148,7 @@
         "SLANG_ENABLE_SLANGRT": "OFF",
         "SLANG_ENABLE_EXAMPLES" : "OFF",        
         "SLANG_ENABLE_SLANG_GLSLANG" : "OFF",
-        "SLANG_GENERATORS_PATH": "../generators/bin"
+        "SLANG_GENERATORS_PATH": "../../generators/bin"
       }
     }
   ],
@@ -183,6 +189,11 @@
       "configuration": "RelWithDebInfo"
     },
     {
+      "name": "vs2022-minSizeRel",
+      "configurePreset": "vs2022",
+      "configuration": "MinSizeRel"
+    },
+    {
       "name": "android-debug",
       "configurePreset": "android",
       "configuration": "Debug"
@@ -216,6 +227,11 @@
       "name": "iOS-releaseWithDebugInfo",
       "configurePreset": "iOS",
       "configuration": "RelWithDebInfo"
+    },
+    {
+      "name": "iOS-minSizeRel",
+      "configurePreset": "iOS",
+      "configuration": "MinSizeRel"
     },
     {
       "name": "emscripten",
