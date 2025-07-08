@@ -93,6 +93,33 @@
         "SLANG_SLANG_LLVM_FLAVOR": "DISABLE",
         "SLANG_ENABLE_SLANG_RHI": false
       }
+    },
+    {
+      "name": "iOS",
+      "inherits": "default",
+      "description": "Build iOS version of Slang",
+      "cacheVariables": {
+        "CMAKE_SYSTEM_NAME": "iOS",
+        "CMAKE_OSX_SYSROOT": "iphoneos",
+        "CMAKE_OSX_ARCHITECTURES": "arm64",
+        "CMAKE_XCODE_ATTRIBUTE_IPHONEOS_DEPLOYMENT_TARGET": "15.6",
+        "SLANG_ENABLE_AFTERMATH": "OFF",
+        "SLANG_ENABLE_CUDA": "OFF",
+        "SLANG_ENABLE_GFX": "OFF",
+        "SLANG_ENABLE_OPTIX": "OFF",
+        "SLANG_ENABLE_REPLAYER": "OFF",
+        "SLANG_ENABLE_SLANG_RHI": "OFF",
+        "SLANG_LIB_TYPE": "STATIC",
+        "SLANG_ENABLE_TESTS": "OFF",
+        "SLANG_ENABLE_PREBUILT_BINARIES" : "OFF",
+        "SLANG_ENABLE_SLANGD": "OFF",
+        "SLANG_ENABLE_SLANGC": "OFF",
+        "SLANG_ENABLE_SLANGI": "OFF",
+        "SLANG_ENABLE_SLANGRT": "OFF",
+        "SLANG_ENABLE_EXAMPLES" : "OFF",        
+        "SLANG_ENABLE_SLANG_GLSLANG" : "OFF",
+        "SLANG_GENERATORS_PATH": "../generators/bin"
+      }
     }
   ],
   "buildPresets": [
@@ -148,6 +175,21 @@
       "inherits": "release",
       "configurePreset": "slang-llvm",
       "targets": ["slang-llvm"]
+    },
+    {
+      "name": "iOS-debug",
+      "configurePreset": "iOS",
+      "configuration": "Debug"
+    },
+    {
+      "name": "iOS-release",
+      "configurePreset": "iOS",
+      "configuration": "Release"
+    },
+    {
+      "name": "iOS-releaseWithDebugInfo",
+      "configurePreset": "iOS",
+      "configuration": "RelWithDebInfo"
     }
   ],
   "packagePresets": [
